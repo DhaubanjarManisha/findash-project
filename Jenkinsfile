@@ -13,9 +13,9 @@ pipeline {
         // Image Name
         IMAGE_NAME = 'findash-app-trainer' // Add your username here
         // Jenkins Credential ID
-        NEXUS_CRED = 'nexus-auth-trainer' 
+        NEXUS_CRED = 'nexus-auth'
         // Set container name
-        CONTAINER_NAME = 'findash-app-trainer'
+        CONTAINER_NAME = 'findash-app-trainer' // Add your username here
     }
 
     stages {
@@ -32,7 +32,6 @@ pipeline {
                     // Login to Nexus and Push
                     docker.withRegistry("http://${NEXUS_REGISTRY}", "${NEXUS_CRED}") {
                         appImage.push()
-                        appImage.push("latest")
                     }
                 }
             }
